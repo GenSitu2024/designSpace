@@ -173,24 +173,25 @@ function updateDisplayedContent() {
 		// else if (isContained(NGoal,Array(d.Goal))){return;}
 
 		if (NGoal.length >= 1 && typeof(d.Goal) == "string" && hasDuplicateElements(NGoal,d.Goal.split(','))) {
-			console.log(NGoal,d.Goal.split(','))
-			console.log("符合搜索条件，直接返回");
+			// console.log(NGoal,d.Goal.split(','))
+			// console.log("符合搜索条件，直接返回");
 			return;
 		} else if (isContained(NGoal, Array(d.Goal))) {
-			console.log(NGoal,d.Goal.split(','))
-			console.log("NGoal 是 d.Goal 的子集，直接返回");
+			// console.log(NGoal,d.Goal.split(','))
+			// console.log("NGoal 是 d.Goal 的子集，直接返回");
 			return ;
 		} else {
-			console.log(NGoal,d.Goal.split(','))
-			console.log("不符合搜索条件");
+			// console.log(NGoal,d.Goal.split(','))
+			// console.log("不符合搜索条件");
 		}
 		
 		if(NdataOrigin.length>=1 && typeof(d.dataOrigin)=="string" && hasDuplicateElements(NdataOrigin,d.dataOrigin.split(','))){ return;}
 		else if (isContained(NdataOrigin,Array(d.dataOrigin))){return;}
 
-		console.log(NSituatedness,d.Situatedness.split(','))
+		
 		if(NSituatedness.length>=1 && typeof(d.Situatedness)=="string" && hasDuplicateElements(NSituatedness,d.Situatedness.split(','))){ return;}
-		else if (isContained(NSituatedness,Array(d.Situatedness))){return;}
+		// else if (isContained(NSituatedness,Array(d.Situatedness))){return;}
+		else{console.log(NSituatedness,d.Situatedness.split(','))}
 
 		if(NrepresentationForm.length>=1 && typeof(d.representationForm)=="string" && hasDuplicateElements(NrepresentationForm,d.representationForm.split(','))){ return;}
 		else if (isContained(NrepresentationForm,Array(d.representationForm))){return;}
