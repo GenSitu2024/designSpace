@@ -206,7 +206,7 @@ function updateDisplayedContent() {
 	
 
 	if(!eligibleItems.length) {
-		container.append("<p class=\"text-muted\">No eligible videos found.</p>");
+		container.append("<p class=\"text-muted\">No eligible cases found.</p>");
 	} else {
 		$.each(eligibleItems, function(i, d) {
 
