@@ -1,13 +1,5 @@
 var COOKIE_TITLE = "videobrowser_idvx_tongji_cookie";
 
-var NUserFull = ["Individual","Group", "Public","Group,Public","Individual,Group", ]
-var NTopicFull = ["Society&History(include media)","Entertainment Sports & Culture", "Environment(Surroudings/Nature),Geography&Ecology" ,"Health, Life & Emotion","Science", "Industry,Architecture&Engineering", "Unspecified&MixedTopics"]
-var NPresentationFull = ["XR","Event","Artifact","Installation"]
-var NGoalFull = ["comprehension", "communication",	"archive"	,"engagement"	,"reflection" ,	"analysis"]
-var NdataOriginFull = ['Environmental data',"Participant-generated","Collected&Uploaded"	,"Unspecified" ]
-var NSituatednessFull = [ "physical referent",	"physical referent proxy",	"environment",	"environment proxy"]
-var NrepresentationFormFull = [ "visual"	,"haptic"	,"sound",	"other (taste, smell)"]
-
 var parameter = {
 	'txt':'',
 	'year':[1996,2022],
@@ -79,17 +71,12 @@ function isContained(aa,bb){
 
 //bind functions concerned to all handlers
 function setupHandlers() {
-	//set up the search handler
-	// $("#input-searchBar").on("focus", searchCSS);
-	// $("#input-searchBar").blur(searchCSSReturn);
-	// $("#input-searchBar").on("keyup", onSearchK);
+
 	$("#idvx-searchBar-button").on("click", onSearchC);
 
-	//set up Analogy Strategy 
 	$("#idvx-NDpanel").on("click", ".idvx-bottom-btn", onFilterToggleND1);
 	$(".idvx-User-panelBody").on("click", ".idvx-collapsed-entry", onFilterToggleND1); //icons
 
-	// set up transformation        修改这一行的内容
 	$("#idvx-NDpanel").on("click", ".idvx-bottom-btn", onFilterToggleND2);
 	$(".idvx-Topic-panelBody").on("click", ".idvx-collapsed-entry", onFilterToggleND2); //icons
 
@@ -108,16 +95,14 @@ function setupHandlers() {
 	$("#idvx-NDpanel").on("click", ".idvx-bottom-btn", onFilterToggleND7);
 	$(".idvx-representationForm-panelBody").on("click", ".idvx-collapsed-entry", onFilterToggleND7); //icons
 
-
-	//set up Modals in video container
 	$("#idvx-videoContainer").on("click", ".idvx-singleContainer", onVideoClick);
 	$("#myModal").on("hidden.bs.modal", onModalHidden);
 }
 
 
-var itemsMap = {}; //filtered data
+var itemsMap = {}; 
 var itemsShortMap = {};
-// load data from json file
+
 function loadData() {
 	$.getJSON("list/dataset2.json", function(data) {
 		itemsMap = {};
@@ -130,96 +115,90 @@ function loadData() {
 
 			d.png = new Image(); 
 			d.png.src = "thumbnail/"+d.id+".png";
-			// console.log(d)
 
 			itemsMap[i] = d;
 		});
 
 		configureTimeFilter();
 		updateDisplayedContent();
-		// console.log("ready_data");
 	})
 }
 
-//update the displayed content
 function updateDisplayedContent() {
 	var container = $("#idvx-videoContainer");
 	container.empty();
 	$(".tooltip").remove();
-	// console.log(parameter)
 
 	var timeRangeMin = parameter.year[0];
 	var timeRangeMax = parameter.year[1];
-	// var NObject = parameter.object;  //array
 	var NUser = parameter.User;  //object
 	var NTopic = parameter.Topic;
-	var NPresentation = parameter.Presentation;
-	var NGoal = parameter.Goal;
-	var NdataOrigin = parameter.dataOrigin;
-	var NSituatedness = parameter.Situatedness;
-	var NrepresentationForm = parameter.representationForm;
-	var NDescription = parameter.Description;
-	var NSourcelink = parameter.Sourcelink;
-	var consistentId = {};  //if an was out or repeating
-	// console.log(parameter)
-	// console.log(NIntent)
-	//filter video contents according to parameter
+	var consistentId = {};  
+
 	var eligibleItems = []; //eligible array
-	// console.log(itemsMap)
+
 	$.each(itemsMap, function(i, d) {
 		var ID = d.id;
-		//initialize a identical array : [object mark, intent mark]
 		if(!consistentId[ID] || consistentId[ID] != -1)
 			consistentId[ID] = 1;
 		else
 			return ;
-
-		//filter time range
 		
 		if((d.years < timeRangeMin) || (d.years > timeRangeMax)) {
 			consistentId[ID] = -1;
 			return ;
 		}
 
-		//filter search txt
 		if(!isRelevantToSearch(d))
 			return ;
 
 
-	var NPresentation = parameter.Presentation;
-	var NGoal = parameter.Goal;
-	var NdataOrigin = parameter.dataOrigin;
-	var NSituatedness = parameter.Situatedness;
-	var NrepresentationForm = parameter.representationForm;
-	// var NDescription = parameter.Description;
-	// var NSourcelink = parameter.Sourcelink;
-		if(NUser.length>=1 && typeof(d.User)=="string" && (isContained(d.User,NUser) || isContained(NUser,d.User))){ return;}
+		var NPresentation = parameter.Presentation;
+		var NGoal = parameter.Goal;
+		var NdataOrigin = parameter.dataOrigin;
+		var NSituatedness = parameter.Situatedness;
+		var NrepresentationForm = parameter.representationForm;
+		// console.log(d.Goal, NGoal)
+
+		if(NUser.length>=1 && typeof(d.User)=="string" && (hasDuplicateElements(NUser,d.User.split(',')))){ ; return;}
 		else if (isContained(NUser,Array(d.User))){return;}
 
-		if(NTopic.length>=1 && typeof(d.Topic)=="string" && (isContained(d.Topic,NTopic) || isContained(NTopic,d.Topic))){ return;}
+		if(NTopic.length>=1 && typeof(d.Topic)=="string" &&  (isContained(d.Topic,NTopic) || isContained(NTopic,d.Topic))){ return;}
 		else if (isContained(NTopic,Array(d.Topic))){return;}
 
-		if(NPresentation.length>=1 && typeof(d.Presentation)=="string" && (isContained(d.Presentation,NPresentation) || isContained(NPresentation,d.Presentation))){ return;}
+		if(NPresentation.length>=1 && typeof(d.Presentation)=="string" && (hasDuplicateElements(NPresentation,d.Presentation.split(',')))){ return;}
 		else if (isContained(NPresentation,Array(d.Presentation))){return;}
 
-		if(NGoal.length>=1 && typeof(d.Goal)=="string" && (isContained(d.Goal,NGoal) || isContained(NGoal,d.Goal))){ return;}
-		else if (isContained(NGoal,Array(d.Goal))){return;}
-	
-		if(NdataOrigin.length>=1 && typeof(d.dataOrigin)=="string" && (isContained(d.dataOrigin,NdataOrigin) || isContained(NdataOrigin,d.dataOrigin))){ return;}
+		// if(NGoal.length>=1 && typeof(d.Goal)=="string" && (isContained(NGoal,d.Goal,NGoal) || isContained(NGoal,d.Goal))){ return;}
+		// else if (isContained(NGoal,Array(d.Goal))){return;}
+
+		if (NGoal.length >= 1 && typeof(d.Goal) == "string" && hasDuplicateElements(NGoal,d.Goal.split(','))) {
+			console.log(NGoal,d.Goal.split(','))
+			console.log("符合搜索条件，直接返回");
+			return;
+		} else if (isContained(NGoal, Array(d.Goal))) {
+			console.log(NGoal,d.Goal.split(','))
+			console.log("NGoal 是 d.Goal 的子集，直接返回");
+			return ;
+		} else {
+			console.log(NGoal,d.Goal.split(','))
+			console.log("不符合搜索条件");
+		}
+		
+		if(NdataOrigin.length>=1 && typeof(d.dataOrigin)=="string" && hasDuplicateElements(NdataOrigin,d.dataOrigin.split(','))){ return;}
 		else if (isContained(NdataOrigin,Array(d.dataOrigin))){return;}
 
-		if(NSituatedness.length>=1 && typeof(d.Situatedness)=="string" && (isContained(d.Situatedness,NSituatedness) || isContained(NSituatedness,d.Situatedness))){ return;}
+		console.log(NSituatedness,d.Situatedness.split(','))
+		if(NSituatedness.length>=1 && typeof(d.Situatedness)=="string" && hasDuplicateElements(NSituatedness,d.Situatedness.split(','))){ return;}
 		else if (isContained(NSituatedness,Array(d.Situatedness))){return;}
 
-		if(NrepresentationForm.length>=1 && typeof(d.representationForm)=="string" && (isContained(d.representationForm,NrepresentationForm) || isContained(NrepresentationForm,d.representationForm))){ return;}
+		if(NrepresentationForm.length>=1 && typeof(d.representationForm)=="string" && hasDuplicateElements(NrepresentationForm,d.representationForm.split(','))){ return;}
 		else if (isContained(NrepresentationForm,Array(d.representationForm))){return;}
 
 		if(eligibleItems[eligibleItems.length-1] && (eligibleItems[eligibleItems.length-1]["id"] == ID))
 			return ;
-		//  console.log(eligibleItems)
-		//append the eligible item into the Object
+
 		var itemInfo = {"id":d.id,"Title":d.Title, "Description":d.Description, "Classification":d.Classification, "Topic":d.Topic, "png":d.png, "Source":d.Source, "Sourcelink":d.Sourcelink};
-		// var itemInfo = {"id":ID, "name":d.Name, "Author":d.Author, "years":d.years, "png":d.png, "PaperTitle":d.PaperTitle};
 		eligibleItems.push(itemInfo);
 		//  console.log(eligibleItems)
 	});
@@ -245,6 +224,12 @@ function updateDisplayedContent() {
 	}
 
 	updateDisplayedCount();
+}
+
+function hasDuplicateElements(array1, array2) {
+    return array1.some(function(item) {
+        return array2.includes(item);
+    });
 }
 
 
@@ -282,14 +267,18 @@ function onSearchC() {
 
 function isRelevantToSearch(item) {
 	var query = parameter.txt ? parameter.txt.trim() : null;
-	// console.log(query)
-	//check if users do not send in search txt
+
+	console.log(item,query)
+
 	if(!query || !item)
 		return true;
 
 	for(var i = 0; i < searchKeys.length; i++) {
-		if((item[searchKeys[i]].toLowerCase()).indexOf(query) != -1)
+
+		if((item[searchKeys[i]].toLowerCase()).indexOf(query) != -1){
 			return true;
+		}
+
 	}
 
 	return false;
@@ -300,14 +289,10 @@ function isRelevantToSearch(item) {
 var timeFilterNum = [1996,2022];  //all corresponded years
 
 function configureTimeFilter() {
-	// console.log("ready_filter");
-	
-	// Update labels
+
 	$("#left_Num").text(timeFilterNum[0]);
-	// $("#right_Num").text(timeFilterNum[timeFilterEntries.length-1]);
 	$("#right_Num").text(timeFilterNum[1]);
-	// console.log("ready_num");
-	
+
 	// Setup the slider
 	$("#timeFilter").slider({
 		range: true,
@@ -319,17 +304,12 @@ function configureTimeFilter() {
 			timeFilterNum[0] = parseInt(ui.values[0]/ 100);
 			timeFilterNum[1] = parseInt(ui.values[1]/ 100);
 
-			// d3.json("",function(e,d){
-			// 	compsvg.data(d).update()
-			// })
-
 			if (timeFilterNum) {
 				$("#left_Num").text(timeFilterNum[0]);
 				$("#right_Num").text(timeFilterNum[1]);
 				parameter.year = timeFilterNum;
 			}
 
-			
 			updateDisplayedContent();
 		}
 	});
@@ -342,9 +322,7 @@ function configureTimeFilter() {
 // set User
 function onFilterToggleND1() {
 	var element = $(this);
-	
-	//keywords in parameter.object should be excluded!
-	// var keywordOnClick = element.children(".panel-collapse").text().toLowerCase();
+
 	var keywordOnClick = element.attr("name");
 	console.log("nihao",keywordOnClick)
 
@@ -359,18 +337,14 @@ function onFilterToggleND1() {
 		parameter.User.splice($.inArray(keywordOnClick, parameter.User), 1);
 	console.log("zhelishi",parameter)
 
-	// element.children(".true").toggle();
 	updateDisplayedContent();
-	// console.log("onFilterToggle "+ keywordOnClick +" changed");
 }
 
 
 // set 
 function onFilterToggleND2() {
 	var element = $(this);
-	
-	//keywords in parameter.object should be excluded!
-	// var keywordOnClick = element.children(".panel-collapse").text().toLowerCase();
+
 	var keywordOnClick = element.attr("name");
 	console.log(keywordOnClick)
 
@@ -491,19 +465,15 @@ function onFilterToggleNI() {
 	var element = $(this);
 	var collapseContainer = element.parents(".panel-collapse").prev();
 
-	//the names of keyword and its container
+
 	var keywordOnClick = element.attr("Name").toLowerCase();
 	var keywordContainer = collapseContainer.attr("id").toLowerCase();
-	// console.log(parameter.object)
-	// console.log(parameter)
-	// console.log(element)
 	if (element.hasClass("active") && ($.inArray(keywordOnClick, parameter.intent[keywordContainer])<0))
 		parameter.intent[keywordContainer].push(keywordOnClick);
 	else if(!element.hasClass("active") && $.inArray(keywordOnClick, parameter.intent[keywordContainer]>=0))
 		parameter.intent[keywordContainer].splice($.inArray(keywordOnClick, parameter.intent[keywordContainer]), 1);
 	//  console.log(parameter)
 	updateDisplayedContent();
-	// console.log(keywordOnClick+" in "+keywordContainer+" acted");
 }
 
 function onFilterResetToggleNI() {
@@ -523,9 +493,7 @@ function onFilterResetToggleNI() {
 		for(var i=0; i<elementChildren.length; i++) {
 			parameter.appendToIntent($(elementChildren[i]).attr("Name").toLowerCase(), keywordOnClick);
 			if(!$(elementChildren[i]).hasClass("active")){
-				// $(elementChildren[i]).removeClass("active");
 
-				//light all the icons up immediately behind hidden panel
 				$(elementChildren[i]).addClass("active");
 			}
 		}
@@ -578,10 +546,6 @@ function displayModalDetails(id){
 
 	$("#idvx-modalImage").html("<img class=\"idvx-modalPng\" src=\"thumbnail/" + id + ".png\" >");
 
-
-	// $("#idvx-description").html("<b>Description</b>:&nbsp;&nbsp;"  + item.Description);
-
-
 	$("#idvx-title").html( item.Title);
 
 	$("#idvx-User").html("<b>User</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" + item.User + "</span>");
@@ -591,9 +555,6 @@ function displayModalDetails(id){
 	$("#idvx-dataOrigin").html("<b>dataOrigin</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.dataOrigin+ "</span>");
 	$("#idvx-Situatedness").html("<b>Situatedness</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.Situatedness+ "</span>");
 	$("#idvx-representationForm").html("<b>representationForm</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.representationForm+ "</span>");
-
-	// $("#idvx-topic").html("<b>Topic</b>:&nbsp;<span style='color: orange;'>" + item.Topic+ "</span>");
-	// $("#idvx-source").html("<b>Source</b>&nbsp;" + item.Source);
 
 	if (typeof item.Description == "string")
 		{$("#idvx-Description").html("<b>Description:</b>&nbsp;&nbsp;" + '<span class="description">'+ item.Description +'</span>');}
