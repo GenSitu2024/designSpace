@@ -1,23 +1,10 @@
-/*
-	System Driver
-	Author : Nan Cao (nancao.org)
-*/
-// var compsvg = vis.compsvg().size([$("#mainview").width(), $("#mainview").width() * 0.6]),
-
-//cookie title
 var COOKIE_TITLE = "videobrowser_idvx_tongji_cookie";
 
-// var NStrategyFull=["comparison", "unitization", "accumulation", "proportion"];
-var NTransformationFull=['yes','no']
-var NBindingTypeFull=['length','volume','area','quantity','time','tempreture','concept']
-var NPresentationFormFull= ['static','dynamic']
-var NLayoutFull=['juxtaposition','fusion']
-//visual	haptic	sound	other (taste, smell)
-var NUserFull = ["Individual","Group", "Public" ]
-var NTopicFull = ["Society&History(include media)","Entertainment,Sports&Culture", "Environment(Surroudings/Nature),Geography&Ecology" ,"Health,Life&Emotion","Science", "Industry,Architecture&Engineering", "Unspecified&MixedTopics"]
+var NUserFull = ["Individual","Group", "Public","Group,Public","Individual,Group", ]
+var NTopicFull = ["Society&History(include media)","Entertainment Sports & Culture", "Environment(Surroudings/Nature),Geography&Ecology" ,"Health, Life & Emotion","Science", "Industry,Architecture&Engineering", "Unspecified&MixedTopics"]
 var NPresentationFull = ["XR","Event","Artifact","Installation"]
 var NGoalFull = ["comprehension", "communication",	"archive"	,"engagement"	,"reflection" ,	"analysis"]
-var NdataOriginFull = ['Environmental data',"Participant-generated",	"Collected&Uploaded"	,"Unspecified" ]
+var NdataOriginFull = ['Environmental data',"Participant-generated","Collected&Uploaded"	,"Unspecified" ]
 var NSituatednessFull = [ "physical referent",	"physical referent proxy",	"environment",	"environment proxy"]
 var NrepresentationFormFull = [ "visual"	,"haptic"	,"sound",	"other (taste, smell)"]
 
@@ -258,10 +245,6 @@ function updateDisplayedContent() {
 	}
 
 	updateDisplayedCount();
-	// console.log("ready_filtercontent");
-
-	//display all eligible items on screen
-
 }
 
 
@@ -297,15 +280,6 @@ function onSearchC() {
 	// console.log(txt);
 }
 
-// Search Bar
-// function onSearchK(event) {
-// 	if(event.keyCode == 13)
-// 		$("#idvx-searchBar-button").trigger("click");
-// }
-
-// var searchKeys = ['intent', 'name', 'object', 'sub-intent', 'subject', 'technique', 'visualization', 'year'];
-// var searchKeys = ['Name','PaperTitle','Author'];
-//if search txt in relevant values
 function isRelevantToSearch(item) {
 	var query = parameter.txt ? parameter.txt.trim() : null;
 	// console.log(query)
@@ -398,6 +372,7 @@ function onFilterToggleND2() {
 	//keywords in parameter.object should be excluded!
 	// var keywordOnClick = element.children(".panel-collapse").text().toLowerCase();
 	var keywordOnClick = element.attr("name");
+	console.log(keywordOnClick)
 
 	if (!element.hasClass("active"))
 		element.children(".true").show();
@@ -408,6 +383,8 @@ function onFilterToggleND2() {
 		parameter.Topic.push(keywordOnClick);
 	else if(!element.hasClass("active") && $.inArray(keywordOnClick, parameter.Topic)>=0)
 		parameter.Topic.splice($.inArray(keywordOnClick, parameter.Topic), 1);
+	
+	console.log(parameter)
 
 	updateDisplayedContent();
 
@@ -601,31 +578,31 @@ function displayModalDetails(id){
 
 	$("#idvx-modalImage").html("<img class=\"idvx-modalPng\" src=\"thumbnail/" + id + ".png\" >");
 
-	if(item.Description !="no description"){
-		$("#idvx-description").html("<b>Description</b>:&nbsp;&nbsp;"  + item.Description);
-	}
+
+	// $("#idvx-description").html("<b>Description</b>:&nbsp;&nbsp;"  + item.Description);
+
 
 	$("#idvx-title").html( item.Title);
 
-	$("#idvx-User").html("<b>User</b>:&nbsp;&nbsp;<span style='color: orange;'>" + item.User + "</span>");
-	$("#idvx-Topic").html("<b>Topic</b>:&nbsp;&nbsp;<span style='color: orange;'>" +item.Topic+ "</span>");
-	$("#idvx-Presentation").html("<b>Presentation</b>:&nbsp;&nbsp;<span style='color: orange;'>"+item.Presentation+ "</span>");
-	$("#idvx-Goal").html("<b>Goal</b>:&nbsp;&nbsp;<span style='color: orange;'>" +item.Goal+ "</span>");
-	$("#idvx-dataOrigin").html("<b>dataOrigin</b>:&nbsp;&nbsp;<span style='color: orange;'>" +item.dataOrigin+ "</span>");
-	$("#idvx-Situatedness").html("<b>Situatedness</b>:&nbsp;&nbsp;<span style='color: orange;'>" +item.Situatedness+ "</span>");
-	$("#idvx-representationForm").html("<b>representationForm</b>:&nbsp;&nbsp;<span style='color: orange;'>" +item.representationForm+ "</span>");
+	$("#idvx-User").html("<b>User</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" + item.User + "</span>");
+	$("#idvx-Topic").html("<b>Topic</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.Topic+ "</span>");
+	$("#idvx-Presentation").html("<b>Presentation</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>"+item.Presentation+ "</span>");
+	$("#idvx-Goal").html("<b>Goal</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.Goal+ "</span>");
+	$("#idvx-dataOrigin").html("<b>dataOrigin</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.dataOrigin+ "</span>");
+	$("#idvx-Situatedness").html("<b>Situatedness</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.Situatedness+ "</span>");
+	$("#idvx-representationForm").html("<b>representationForm</b>:&nbsp;&nbsp;<span style='color: #b341a0;'>" +item.representationForm+ "</span>");
 
 	// $("#idvx-topic").html("<b>Topic</b>:&nbsp;<span style='color: orange;'>" + item.Topic+ "</span>");
 	// $("#idvx-source").html("<b>Source</b>&nbsp;" + item.Source);
-	$("#idvx-Sourcelink").html("<b>Source Link </b>:&nbsp;<a href=\"" + item.Sourcelink + "\" target=\"_blank\">" + item.Sourcelink + "</a>");
 
 	if (typeof item.Description == "string")
-		{$("#idvx-Description").html("<i><b>Description:</b></i>&nbsp;&nbsp;" + '<span class="badge progress-bar-danger">'+item.Description+'</span>');}
-	else
-	   {var DescriptionHTML = "<i><b>Description:</b></i>&nbsp;&nbsp;";
-		item.Description.forEach(element=>{DescriptionHTML+= '<span class="badge progress-bar-danger">'+element+'</span>'});
+		{$("#idvx-Description").html("<b>Description:</b>&nbsp;&nbsp;" + '<span class="description">'+ item.Description +'</span>');}
+	else{
+		var DescriptionHTML = "<i><b>Description:</b></i>&nbsp;&nbsp;";
+		item.Description.forEach(element=>{DescriptionHTML+= '<span class="description">'+element+'</span>'});
 		$("#idvx-Description").html(DescriptionHTML);
 	} 
+	$("#idvx-Sourcelink").html("<b>Source Link </b>:&nbsp;<a href=\"" + item.Sourcelink + "\" target=\"_blank\">" + item.Sourcelink +'\n' + "</a>");
 
 	 console.log("single Modal loaded.ID:" + item.id);
 

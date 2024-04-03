@@ -551,9 +551,6 @@ idvx-navbarimage{
 	float: left;
 	width: 24px;
 	height: 24px;
-	/* background-repeat: no-repeat; */
-	/* background-image: url(../img/icons.png); */
-	/* background-position: -112px -1px; */
 }
 
 #object-checkbox01.active:before,
@@ -818,7 +815,7 @@ idvx-navbarimage{
 
 .idvx-collapsed-container > .btn-primary.hover,
 .idvx-collapsed-container > .btn-primary:hover {
-	/* box-shadow: 0 4px 4px 0 #8DCFFF; */
+	box-shadow: 0 4px 4px 0 #8DCFFF;
 	border: 1px solid rgba(255, 255, 255, 0.514);
 }
 
@@ -837,11 +834,17 @@ idvx-navbarimage{
 .idvx-collapsed-container > .btn-primary:active:focus,
 .idvx-collapsed-container > .btn-primary:active:hover {
     background-color: white;
-    /* box-shadow: 0 4px 4px 0 #8DCFFF; */
+    box-shadow: 1px 2px 2px 1px hsl(315, 100%, 78%);
     /* border-color: #bdbdbd; */
-	color: #FEC00F;
+	color: #b341a0;
 	margin: 3px 0px;
 }
+
+.idvx-collapsed-container > .btn:not(.active) {
+    background-color: gray;
+    /* 其他样式 */
+}
+
 
 .idvx-task-panelSingle #presentation[aria-expanded="true"]:after {
 	content: "";
@@ -891,7 +894,6 @@ idvx-navbarimage{
 	/* padding: 1px; */
 	text-align: center;
 	vertical-align: middle;
-
 }
 
 .idvx-collapsed-container > #one-one:not(.active) {
@@ -955,7 +957,7 @@ img.idvx-videoImg {
 .idvx-singleContainer:focus,
 .idvx-singleContainer:hover,
 .idvx-singleContainer.active {
-	box-shadow: 0 5px 4px 0 #fdbb84;
+	box-shadow: 0 5px 4px 0 #fd84fb;
 }
 
 #idvx-object .btn-group-vertical>.btn+.btn, #idvx-object .btn-group-vertical>.btn+.btn-group, #idvx-object .btn-group-vertical>.btn-group+.btn, #idvx-object .btn-group-vertical>.btn-group+.btn-group {
@@ -1020,121 +1022,175 @@ text-transform:capitalize}
   
 
 
-
   /* button icons */
 .idvx-collapsed-container > #four-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/comparison-1.png);
+	background-image: url(../img/individual.png);
 	/*  将图像设置为完全灰度 */
-    filter: grayscale(100%);
+    filter: grayscale(10%);
 }
 
 
 .idvx-collapsed-container > #four-one {
 	background-repeat: no-repeat;
-	background-image: url(../img/comparison.png);
+	background-image: url(../img/individual.png);
 	filter: grayscale(20%) brightness(100%) ;
 }
 
 .idvx-collapsed-container > #four-two:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/unitization-1.png);
+	background-image: url(../img/group.png);
 	 /* 将图像设置为完全灰度 */
+	filter: grayscale(10%);
 }
 
 .idvx-collapsed-container > #four-two {
 	background-repeat: no-repeat;
-	background-image: url(../img/unitization.png);
+	background-image: url(../img/group.png);
 }
 
 .idvx-collapsed-container > #four-three:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/accumulation-1.png);
+	background-image: url(../img/public.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 .idvx-collapsed-container > #four-three {
 	background-repeat: no-repeat;
-	background-image: url(../img/accumulation.png);
+	background-image: url(../img/public.png);
 }
-
-.idvx-collapsed-container > #four-four:not(.active) {
-	background-repeat: no-repeat;
-	background-image: url(../img/proportion-1.png);
-	 /* 将图像设置为完全灰度 */
-}
-
-
-
-.idvx-collapsed-container > #four-four {
-	background-repeat: no-repeat;
-	background-image: url(../img/proportion.png);
-}
-
 
 
 .idvx-collapsed-container > #two-one {
 	background-repeat: no-repeat;
-	background-image: url(../img/yes.png);
+	background-image: url(../img/Society&History.png);
+		 /* 将图像设置为完全灰度 */
+		 filter: grayscale(10%);
 
 } 
+.idvx-collapsed-container > * {
+    background-position: center;
+}
 
 .idvx-collapsed-container > #two-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/yes-1.png);
+	background-image: url(../img/Society&History.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 .idvx-collapsed-container > #two-two:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/no-1.png);
+	background-image: url(../img/Entertainment\,\ Sports&Culture.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 .idvx-collapsed-container > #two-two {
 	background-repeat: no-repeat;
-	background-image: url(../img/no.png);
+	background-image: url(../img/Entertainment\,\ Sports&Culture.png);
 	/* background-position: -1px -705px; */
 	/* background-size: 33px; */
 }
 
+.idvx-collapsed-container > #two-3:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Environment\,\ Geography&Ecology.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+.idvx-collapsed-container > #two-3 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Environment\,\ Geography&Ecology.png);
+	/* background-position: -1px -705px; */
+	/* background-size: 33px; */
+}
+
+.idvx-collapsed-container > #two-4:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Health\,\ Life\ &\ Emotion.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+.idvx-collapsed-container > #two-4 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Health\,\ Life\ &\ Emotion.png);
+	/* background-position: -1px -705px; */
+	/* background-size: 33px; */
+}
+.idvx-collapsed-container > #two-5:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Industry\,\ Architecture&Engineering.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+.idvx-collapsed-container > #two-5 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Industry\,\ Architecture&Engineering.png);
+	/* background-position: -1px -705px; */
+	/* background-size: 33px; */
+}
+.idvx-collapsed-container > #two-6:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Science.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+.idvx-collapsed-container > #two-6 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Science.png);
+	/* background-position: -1px -705px; */
+	/* background-size: 33px; */
+}
+.idvx-collapsed-container > #two-7:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Unspecified&Mixed\ Topics.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+.idvx-collapsed-container > #two-7 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Unspecified&Mixed\ Topics.png);
+	/* background-position: -1px -705px; */
+	/* background-size: 33px; */
+}
+
+
 .idvx-collapsed-container > #Seven-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/length-1.png);
+	background-image: url(../img/XR.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 .idvx-collapsed-container >  #Seven-one  {
 	background-repeat: no-repeat;
-	background-image: url(../img/length.png);
+	background-image: url(../img/XR.png);
 
 }
 
 .idvx-collapsed-container > #Seven-two:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/volume-1.png);
+	background-image: url(../img/Event.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 .idvx-collapsed-container > #Seven-two {
 	background-repeat: no-repeat;
-	background-image: url(../img/volume.png);
+	background-image: url(../img/Event.png);
 }
 
 .idvx-collapsed-container > #Seven-three:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/area-1.png);
+	background-image: url(../img/Artifact.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 .idvx-collapsed-container > #Seven-three {
 	background-repeat: no-repeat;
-	background-image: url(../img/area.png);
+	background-image: url(../img/Artifact.png);
 }
 
 .idvx-collapsed-container > #Seven-four:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/quantity-1.png);
+	background-image: url(../img/Installation.png);
 	 /* 将图像设置为完全灰度 */
 
 }
@@ -1142,51 +1198,13 @@ text-transform:capitalize}
 
 .idvx-collapsed-container > #Seven-four {
 	background-repeat: no-repeat;
-	background-image: url(../img/quantity.png);
-
-}
-
-.idvx-collapsed-container > #Seven-five:not(.active) {
-	background-repeat: no-repeat;
-	background-image: url(../img/time-1.png);
-	 /* 将图像设置为完全灰度 */
-}
-
-
-.idvx-collapsed-container > #Seven-five {
-	background-repeat: no-repeat;
-	background-image: url(../img/time.png);
-}
-
-.idvx-collapsed-container > #Seven-six:not(.active) {
-	background-repeat: no-repeat;
-	background-image: url(../img/temperature-1.png);
-	 /* 将图像设置为完全灰度 */
-}
-
-
-.idvx-collapsed-container > #Seven-six {
-	background-repeat: no-repeat;
-	background-image: url(../img/temperature.png);
-}
-
-
-.idvx-collapsed-container > #Seven-seven:not(.active) {
-	background-repeat: no-repeat;
-	background-image: url(../img/concept-1.png);
-	 /* 将图像设置为完全灰度 */
-}
-
-
-.idvx-collapsed-container > #Seven-seven {
-	background-repeat: no-repeat;
-	background-image: url(../img/concept.png);
+	background-image: url(../img/Installation.png);
 
 }
 
 .idvx-collapsed-container > #presentation-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/static-1.png);
+	background-image: url(../img/comprehension.png);
 	 /* 将图像设置为完全灰度 */
 
 }
@@ -1194,43 +1212,215 @@ text-transform:capitalize}
 
 .idvx-collapsed-container > #presentation-one {
 	background-repeat: no-repeat;
-	background-image: url(../img/static.png);
+	background-image: url(../img/comprehension.png);
 
 }
 
 .idvx-collapsed-container > #presentation-two:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/dynamic-1.png);
+	background-image: url(../img/communication.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 
 .idvx-collapsed-container > #presentation-two {
 	background-repeat: no-repeat;
-	background-image: url(../img/dynamic.png);
+	background-image: url(../img/communication.png);
 
 }
 
+.idvx-collapsed-container > #presentation-3:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/archive.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #presentation-3 {
+	background-repeat: no-repeat;
+	background-image: url(../img/archive.png);
+}
+
+.idvx-collapsed-container > #presentation-4:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/engagement.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #presentation-4 {
+	background-repeat: no-repeat;
+	background-image: url(../img/engagement.png);
+}
+.idvx-collapsed-container > #presentation-5:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/reflection.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #presentation-5 {
+	background-repeat: no-repeat;
+	background-image: url(../img/reflection.png);
+}
+.idvx-collapsed-container > #presentation-6:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/analysis.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #presentation-6 {
+	background-repeat: no-repeat;
+	background-image: url(../img/analysis.png);
+}
+
+
 .idvx-collapsed-container > #layout-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/juxtaposition-1.png);
+	background-image: url(../img/Environmental\ data.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 
 .idvx-collapsed-container > #layout-one {
 	background-repeat: no-repeat;
-	background-image: url(../img/juxtaposition.png);
+	background-image: url(../img/Environmental\ data.png);
 
 }
 .idvx-collapsed-container > #layout-two:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/fusion-1.png);
+	background-image: url(../img/Participant-generated.png);
 }
 
 
 .idvx-collapsed-container > #layout-two {
 	background-repeat: no-repeat;
-	background-image: url(../img/fusion.png);
+	background-image: url(../img/Participant-generated.png);
 
+}
+
+
+.idvx-collapsed-container > #layout-3:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Collected&Uploaded.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #layout-3 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Collected&Uploaded.png);
+
+}
+.idvx-collapsed-container > #layout-4:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Unspecified.png);
+}
+
+
+.idvx-collapsed-container > #layout-4 {
+	background-repeat: no-repeat;
+	background-image: url(../img/Unspecified.png);
+
+}
+
+
+.idvx-collapsed-container > #situ-one:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/physical\ referent.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #situ-one {
+	background-repeat: no-repeat;
+	background-image: url(../img/physical\ referent.png);
+
+}
+.idvx-collapsed-container > #situ-two:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/physical\ referent\ proxy.png);
+}
+
+
+.idvx-collapsed-container > #situ-two {
+	background-repeat: no-repeat;
+	background-image: url(../img/physical\ referent\ proxy.png);
+
+}
+
+
+.idvx-collapsed-container > #situ-3:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/environment.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #situ-3 {
+	background-repeat: no-repeat;
+	background-image: url(../img/environment.png);
+
+}
+.idvx-collapsed-container > #situ-4:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/environment\ proxy.png);
+}
+
+
+.idvx-collapsed-container > #situ-4 {
+	background-repeat: no-repeat;
+	background-image: url(../img/environment\ proxy.png);
+
+}
+
+
+
+.idvx-collapsed-container > #rf-one:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/Visual.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #rf-one {
+	background-repeat: no-repeat;
+	background-image: url(../img/Visual.png);
+
+}
+.idvx-collapsed-container > #rf-two:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/haptic.png);
+}
+
+
+.idvx-collapsed-container > #rf-two {
+	background-repeat: no-repeat;
+	background-image: url(../img/haptic.png);
+
+}
+
+
+.idvx-collapsed-container > #rf-3:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/sound.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #rf-3 {
+	background-repeat: no-repeat;
+	background-image: url(../img/sound.png);
+
+}
+.idvx-collapsed-container > #rf-4:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/other\ \(taste\,\ smell\).png);
+}
+
+
+.idvx-collapsed-container > #rf-4 {
+	background-repeat: no-repeat;
+	background-image: url(../img/other\ \(taste\,\ smell\).png);
 }
