@@ -1326,55 +1326,86 @@ text-transform:capitalize}
 }
 
 
-.idvx-collapsed-container > #situ-one:not(.active) {
+.idvx-collapsed-container > #situ-scale-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/physical\ referent.png);
+	background-image: url(../img/scale-small.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 
-.idvx-collapsed-container > #situ-one {
+.idvx-collapsed-container > #situ-scale-one {
 	background-repeat: no-repeat;
-	background-image: url(../img/physical\ referent.png);
+	background-image: url(../img/scale-small.png);
 
 }
-.idvx-collapsed-container > #situ-two:not(.active) {
+.idvx-collapsed-container > #situ-scale-two:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/physical\ referent\ proxy.png);
-}
-
-
-.idvx-collapsed-container > #situ-two {
-	background-repeat: no-repeat;
-	background-image: url(../img/physical\ referent\ proxy.png);
-
+	background-image: url(../img/scale-medium.png);
 }
 
 
-.idvx-collapsed-container > #situ-3:not(.active) {
+.idvx-collapsed-container > #situ-scale-two {
 	background-repeat: no-repeat;
-	background-image: url(../img/environment.png);
+	background-image: url(../img/scale-medium.png);
+
+}
+
+
+.idvx-collapsed-container > #situ-scale-3:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/scale-large.png);
 	 /* 将图像设置为完全灰度 */
 }
 
 
-.idvx-collapsed-container > #situ-3 {
+.idvx-collapsed-container > #situ-scale-3 {
 	background-repeat: no-repeat;
-	background-image: url(../img/environment.png);
+	background-image: url(../img/scale-large.png);
 
-}
-.idvx-collapsed-container > #situ-4:not(.active) {
-	background-repeat: no-repeat;
-	background-image: url(../img/environment\ proxy.png);
 }
 
 
-.idvx-collapsed-container > #situ-4 {
+.idvx-collapsed-container > #situ-sem-one:not(.active) {
 	background-repeat: no-repeat;
-	background-image: url(../img/environment\ proxy.png);
+	background-image: url(../img/semantics-indexical.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #situ-sem-one {
+	background-repeat: no-repeat;
+	background-image: url(../img/semantics-indexical.png);
 
 }
 
+
+.idvx-collapsed-container > #situ-sem-two:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/semantics-symbolic.png);
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #situ-sem-two {
+	background-repeat: no-repeat;
+	background-image: url(../img/semantics-symbolic.png);
+
+}
+.idvx-collapsed-container > #situ-sem-three:not(.active) {
+	background-repeat: no-repeat;
+	background-image: url(../img/semantics-iconic.png);
+	filter: grayscale(100%);
+
+	 /* 将图像设置为完全灰度 */
+}
+
+
+.idvx-collapsed-container > #situ-sem-three {
+	background-repeat: no-repeat;
+	background-image: url(../img/semantics-iconic.png);
+	/* filter: grayscale(100%); */
+
+}
 
 
 .idvx-collapsed-container > #rf-one:not(.active) {
